@@ -31,3 +31,46 @@
   вернуть строку "{brand} {model} ({color} - {issue_year}) пролетел {km}
   километров"
 """
+class Transport:
+    brand: str
+    model: str
+    issue_year: int
+    color: str
+    mileage: int
+
+    def __init__(self, brand, model, issue_year, color):
+        self.brand = brand
+        self.model = model
+        self.issue_year = issue_year
+        self.color = color
+        self.mileage = 0
+
+    def move(self, num_km):
+        if num_km>0:
+            self.mileage += num_km
+        else:
+            raise ValueError("Расстояние должно быть положительным числом")
+
+class Car(Transport):
+    engine_type: str
+
+    def __init__(self, brand, model, issue_year, color, engine_type):
+        super().__init__(brand, model, issue_year, color)
+        self.engine_type = engine_type
+
+    def move(self, num_km):
+        super().move(num_km)
+        return f"{self.brand} {self.model} ({self.color} - {self.issue_year}) проехала {self.mileage} километров"
+
+
+class Airplane(Transport):
+    lifting_capacity: str
+
+    def __init__(self, brand, model, issue_year, color, lifting_capacity):
+        super().__init__(brand, model, issue_year, color)
+        self.lifting_capacity = lifting_capacity
+
+    def move(self, num_km):
+        super().move(num_km)
+        return f"{self.brand} {self.model} ({self.color} - {self.issue_year}) пролетел {self.mileage} километров"
+

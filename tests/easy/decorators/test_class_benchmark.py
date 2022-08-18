@@ -1,9 +1,9 @@
 from pytest_mock import MockerFixture
 
-from tasks.easy.decorators.class_benchmark import def_benchmark, class_benchmark
+from tasks.easy.decorators.class_benchmark import func_benchmark, class_benchmark
 
 
-def test_def_benchmark(mocker: MockerFixture, capsys):
+def test_func_benchmark(mocker: MockerFixture, capsys):
     mocked_time = mocker.patch("time.time", side_effect=[
         1632094935,
         1632094936
@@ -12,7 +12,7 @@ def test_def_benchmark(mocker: MockerFixture, capsys):
     def get_sum(a, b):
         return a + b
 
-    decorated_get_sum = def_benchmark(get_sum)
+    decorated_get_sum = func_benchmark(get_sum)
     result = decorated_get_sum(2, b=3)
     assert result == 5
 
