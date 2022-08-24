@@ -27,7 +27,7 @@ class BookCard:
 
     @author.setter
     def author(self, author):
-        if isinstance(author, type(self.__author)):
+        if isinstance(author, str):
             self.__author = author
         else:
             raise ValueError
@@ -38,7 +38,7 @@ class BookCard:
 
     @year.setter
     def year(self, year):
-        if isinstance(year, type(self.__year)) and year > 0 and year < CURRENT_YEAR:
+        if isinstance(year, int) and year > 0 and year <= CURRENT_YEAR:
             self.__year = year
         else:
             raise ValueError
@@ -49,15 +49,24 @@ class BookCard:
 
     @title.setter
     def title(self, title):
-        if isinstance(title, type(self.__title)):
+        if isinstance(title, str):
             self.__title = title
         else:
             raise ValueError
 
     def __init__(self, author, title, year):
-        self.__author = author
-        self.__year = year
-        self.__title = title
+        if isinstance(author, str):
+            self.__author = author
+        else:
+            raise ValueError
+        if isinstance(year, int) and year > 0 and year <= CURRENT_YEAR :
+            self.__year = year
+        else:
+            raise ValueError
+        if isinstance(title, str):
+            self.__title = title
+        else:
+            raise ValueError
 
     def __gt__(self, other):
         return self.__year > other.__year

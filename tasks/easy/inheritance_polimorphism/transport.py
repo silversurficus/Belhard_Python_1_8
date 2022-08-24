@@ -39,10 +39,22 @@ class Transport:
     mileage: int
 
     def __init__(self, brand, model, issue_year, color):
-        self.brand = brand
-        self.model = model
-        self.issue_year = issue_year
-        self.color = color
+        if isinstance(brand, str):
+            self.brand = brand
+        else:
+            raise TypeError
+        if isinstance(model, str):
+            self.model = model
+        else:
+            raise TypeError
+        if isinstance(issue_year, int):
+            self.issue_year = issue_year
+        else:
+            raise TypeError
+        if isinstance(color, str):
+            self.color = color
+        else:
+            raise TypeError
         self.mileage = 0
 
     def move(self, num_km):
@@ -56,7 +68,10 @@ class Car(Transport):
 
     def __init__(self, brand, model, issue_year, color, engine_type):
         super().__init__(brand, model, issue_year, color)
-        self.engine_type = engine_type
+        if isinstance(engine_type, str):
+            self.engine_type = engine_type
+        else:
+            raise TypeError
 
     def move(self, num_km):
         super().move(num_km)
@@ -64,11 +79,14 @@ class Car(Transport):
 
 
 class Airplane(Transport):
-    lifting_capacity: str
+    lifting_capacity: int
 
     def __init__(self, brand, model, issue_year, color, lifting_capacity):
         super().__init__(brand, model, issue_year, color)
-        self.lifting_capacity = lifting_capacity
+        if isinstance(lifting_capacity, int):
+            self.lifting_capacity = lifting_capacity
+        else:
+            raise TypeError
 
     def move(self, num_km):
         super().move(num_km)

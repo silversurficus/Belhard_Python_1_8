@@ -10,19 +10,19 @@
 """
 
 class GameObject:
-    __x: int
-    __y: int
+    _GameObject__x: int
+    _GameObject__y: int
     def __init__(self, x, y):
-        self.__x = x
-        self.__y = y
+        self._GameObject__x = x
+        self._GameObject__y = y
 
     @property
-    def read_x(self):
-        return self.__x
+    def x(self):
+        return self._GameObject__x
     @property
-    def read_y(self):
-        return self.__y
+    def y(self):
+        return self._GameObject__y
 
     def move(self, delta_x, delta_y):
-        self.__x += delta_x
-        self.__y += delta_y
+        self._GameObject__x += delta_x
+        self._GameObject__y += delta_y

@@ -45,8 +45,9 @@ class LibraryReader(Person):
         self.books = set()
 
     def take_books(self, *args):
+        self.books = self.books.union(set(args))
         if len(args)<4:
-            return f"{self.fullname} взял(а) книги: {sorted(args)}"
+            return f"{self.fullname} взял(а) книги: {', '.join(sorted(args))}"
         else:
             return f"{self.fullname} взял(а) {len(args)} книги"
 
@@ -54,8 +55,10 @@ class LibraryReader(Person):
         for book in args:
             if book not in self.books:
                 raise ValueError(f"{self.fullname} не брал: {book}")
+        for argument in args:
+            self.books.remove(argument)
         if len(args)<4:
-            return f"{self.fullname} вернул(а) книги: {sorted(args)}"
+            return f"{self.fullname} вернул(а) книги: {', '.join(sorted(args))}"
         else:
             return f"{self.fullname} вернул(а) {len(args)} книги"
 
