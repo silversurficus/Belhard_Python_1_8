@@ -1,7 +1,6 @@
 from house import House
 from townhouse import Townhouse
-from person import  Person
-
+from person import Person
 
 if __name__ == '__main__':
     house1 = House("aaa", 120, 50000)

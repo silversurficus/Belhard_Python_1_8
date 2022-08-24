@@ -9,6 +9,7 @@
 """
 import time
 
+
 def log_decorator(func):
     def wrapper(*args, **kwargs):
         print(f"Выполняем {func.name} с args: {args} и kwargs: {kwargs}")
@@ -25,7 +26,9 @@ class LogMeta(type):
         decorated_attr = dict((name, log_decorator(value)) for name, value in attrs)
         return super(LogMeta, cls).__new__(cls, name, bases, decorated_attr)
 
-class Hahaha(metaclass = LogMeta):
+
+class Hahaha(metaclass=LogMeta):
+
     def fff(self, x):
         time.sleep(3)
         return "fff"
@@ -33,6 +36,7 @@ class Hahaha(metaclass = LogMeta):
     def hhh(self):
         time.sleep(3)
         return "hhh"
+
 
 h = Hahaha()
 h.fff(1)

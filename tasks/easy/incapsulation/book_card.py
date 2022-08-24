@@ -16,6 +16,7 @@ from datetime import date
 
 CURRENT_YEAR = date.today().year
 
+
 class BookCard:
     __author: str
     __title: str
@@ -59,7 +60,7 @@ class BookCard:
             self.__author = author
         else:
             raise ValueError
-        if isinstance(year, int) and year > 0 and year <= CURRENT_YEAR :
+        if isinstance(year, int) and year > 0 and year <= CURRENT_YEAR:
             self.__year = year
         else:
             raise ValueError

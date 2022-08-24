@@ -26,6 +26,8 @@
 
 Названия книг в сообщениях должны быть отсортированы по алфавиту.
 """
+
+
 class Person:
     fullname: str
     phone: str
@@ -46,7 +48,7 @@ class LibraryReader(Person):
 
     def take_books(self, *args):
         self.books = self.books.union(set(args))
-        if len(args)<4:
+        if len(args) < 4:
             return f"{self.fullname} взял(а) книги: {', '.join(sorted(args))}"
         else:
             return f"{self.fullname} взял(а) {len(args)} книги"
@@ -57,8 +59,7 @@ class LibraryReader(Person):
                 raise ValueError(f"{self.fullname} не брал: {book}")
         for argument in args:
             self.books.remove(argument)
-        if len(args)<4:
+        if len(args) < 4:
             return f"{self.fullname} вернул(а) книги: {', '.join(sorted(args))}"
         else:
             return f"{self.fullname} вернул(а) {len(args)} книги"
-

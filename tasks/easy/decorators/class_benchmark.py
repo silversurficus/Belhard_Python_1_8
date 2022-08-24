@@ -18,8 +18,6 @@
 import time
 
 
-
-
 def func_benchmark(func):
     def wrapper(*args, **kwargs):
         print(f"Выполняем {func.__name__} с args: {args[0:]} и kwargs: {kwargs}")
@@ -33,6 +31,7 @@ def func_benchmark(func):
         return result
     return wrapper
 
+
 def class_benchmark(cls):
     call_attr = {k: v for k, v in cls.__dict__.items() if callable(v) and k[0] != "_"}
     for name, val in call_attr.items():
@@ -40,10 +39,13 @@ def class_benchmark(cls):
         setattr(cls, name, decorated)
     return cls
 
+
 @class_benchmark
 class SomeClass:
+
     def __init__(self):
         pass
+
     def say_hi(self):
         print("Hi")
         print("Hi")
@@ -54,6 +56,7 @@ class SomeClass:
         time.sleep(4)
         print("Hi")
         print("Hi")
+
 
 obj = SomeClass()
 obj.say_hi()

@@ -31,13 +31,17 @@
   вернуть строку "{brand} {model} ({color} - {issue_year}) пролетел {km}
   километров"
 """
-class Transport:
+from abc import ABC, abstractmethod
+
+
+class Transport(ABC):
     brand: str
     model: str
     issue_year: int
     color: str
     mileage: int
 
+    @abstractmethod
     def __init__(self, brand, model, issue_year, color):
         if isinstance(brand, str):
             self.brand = brand
@@ -57,11 +61,13 @@ class Transport:
             raise TypeError
         self.mileage = 0
 
+    @abstractmethod
     def move(self, num_km):
-        if num_km>0:
+        if num_km > 0:
             self.mileage += num_km
         else:
             raise ValueError("Расстояние должно быть положительным числом")
+
 
 class Car(Transport):
     engine_type: str
@@ -91,4 +97,3 @@ class Airplane(Transport):
     def move(self, num_km):
         super().move(num_km)
         return f"{self.brand} {self.model} ({self.color} - {self.issue_year}) пролетел {self.mileage} километров"
-

@@ -1,5 +1,6 @@
 class TomatoBush:
     tomato_list: list
+
     def __init__(self, *args):
         self.tomato_list = []
         for argument in args:
@@ -21,4 +22,3 @@ class TomatoBush:
             indexes.append(tomato.index)
         self.tomato_list = []
         return indexes
-

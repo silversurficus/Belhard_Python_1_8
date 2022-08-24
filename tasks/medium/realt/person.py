@@ -1,5 +1,3 @@
-from house import House
-from townhouse import Townhouse
 
 
 class Person:
@@ -7,6 +5,7 @@ class Person:
     age: int
     money: int
     realty: list
+
     def __init__(self, name, age):
         self.age = age
         self.name = name
@@ -19,10 +18,9 @@ class Person:
     def earn_money(self, money):
         self.money += money
 
-    def make_deal(self, object):
-        if object.cost < self.money:
-            self.money -= object.cost
-            self.realty.append(object.adress)
+    def make_deal(self, obj):
+        if obj.cost < self.money:
+            self.money -= obj.cost
+            self.realty.append(obj.adress)
         else:
             print("Недостаточно денег")
-

@@ -15,6 +15,7 @@ says таким образом, чтобы он возвращал строку 
 
 from abc import ABC, abstractmethod
 
+
 class Animal(ABC):
     name: str
 
@@ -48,5 +49,3 @@ class Cow(Animal):
 
     def says(self):
         return f"{self.name} - корова. Говорит МУ!"
-
-
